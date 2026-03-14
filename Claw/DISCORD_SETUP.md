@@ -225,7 +225,7 @@ role_id = "Parent角色的ID"
 立刻回到开发者控制台 → Bot → 「Reset Token」，生成新的 Token，更新配置文件
 
 **Q: 需要 Elena 有 Discord 账号吗？**
-是的，她需要一个 Discord 账号。7-8岁的孩子注册 Discord 需要填写年龄，Discord 要求用户至少 13 岁。建议用家长邮箱注册，或者让 Elena 使用你的第二个账号。
+是的，她需要一个 Discord 账号。Elena 已有邮箱 elena.jy.wu@gmail.com，用这个邮箱在 https://discord.com/register 注册即可。注册时出生年份填写实际年份，Discord 会提示需要家长同意（Family Center 功能）——按提示操作，或直接跳过即可正常使用。
 
 ---
 
