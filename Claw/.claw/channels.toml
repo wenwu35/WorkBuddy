@@ -8,20 +8,20 @@ bot_token = "${DISCORD_BOT_TOKEN}"
 
 # Discord Server（Guild）ID
 # 右键点击你的 Discord 服务器 → 复制服务器 ID
-guild_id = "YOUR_GUILD_ID"
+guild_id = "1482304562869174385"
 
 # ── 频道配置 ──────────────────────────────────────────────
 
 # 孩子的练习频道
 [channels.discord.child_channel]
 name = "chinese-practice"
-channel_id = "YOUR_CHILD_CHANNEL_ID"   # 创建频道后填入
+channel_id = "1482318417854730331"   # 创建频道后填入
 description = "Elena 的中文练习频道"
 
 # 家长的数据面板频道
 [channels.discord.parent_channel]
 name = "parent-dashboard"
-channel_id = "YOUR_PARENT_CHANNEL_ID"  # 创建频道后填入
+channel_id = "1482318420161597462"  # 创建频道后填入
 description = "家长查看学习数据和报告"
 
 # ── 角色权限配置 ──────────────────────────────────────────
