@@ -29,7 +29,7 @@ description = "家长查看学习数据和报告"
 # Elena 的角色（Child）
 [channels.discord.roles.child]
 role_name = "Elena"
-role_id = "YOUR_CHILD_ROLE_ID"         # 创建角色后填入
+role_id = "1482318410380742719"         # 创建角色后填入
 can_access_channels = ["chinese-practice"]
 permissions = [
   "send_messages",
@@ -40,7 +40,7 @@ permissions = [
 # 家长的角色（Parent）
 [channels.discord.roles.parent]
 role_name = "Parent"
-role_id = "YOUR_PARENT_ROLE_ID"        # 创建角色后填入
+role_id = "1482318408816005242"        # 创建角色后填入
 can_access_channels = ["chinese-practice", "parent-dashboard"]
 permissions = [
   "send_messages",

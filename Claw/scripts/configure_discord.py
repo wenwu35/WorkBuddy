@@ -22,7 +22,7 @@ def create_role(name, color=0):
     url = f"{BASE_URL}/guilds/{DISCORD_GUILD_ID}/roles"
     data = {"name": name, "color": color, "hoist": True}
     resp = requests.post(url, headers=headers, json=data)
-    if resp.status_code == 201:
+    if resp.status_code in (200, 201):
         role = resp.json()
         print(f"✅ Created role: {name} (ID: {role['id']})")
         return role["id"]
@@ -35,7 +35,7 @@ def create_category(name):
     url = f"{BASE_URL}/guilds/{DISCORD_GUILD_ID}/channels"
     data = {"name": name, "type": 4}
     resp = requests.post(url, headers=headers, json=data)
-    if resp.status_code == 201:
+    if resp.status_code in (200, 201):
         cat = resp.json()
         print(f"✅ Created category: {name} (ID: {cat['id']})")
         return cat["id"]
@@ -48,7 +48,7 @@ def create_channel(name, category_id, channel_type=0):
     url = f"{BASE_URL}/guilds/{DISCORD_GUILD_ID}/channels"
     data = {"name": name, "type": channel_type, "parent_id": category_id}
     resp = requests.post(url, headers=headers, json=data)
-    if resp.status_code == 201:
+    if resp.status_code in (200, 201):
         ch = resp.json()
         print(f"✅ Created channel: {name} (ID: {ch['id']})")
         return ch["id"]
@@ -58,8 +58,11 @@ def create_channel(name, category_id, channel_type=0):
 
 
 def set_permission_overwrites(channel_id, overwrites):
-    url = f"{BASE_URL}/channels/{channel_id}/permissions"
     for overwrite in overwrites:
+        target_id = overwrite.get("id")
+        if target_id == "@everyone":
+            target_id = DISCORD_GUILD_ID
+        url = f"{BASE_URL}/channels/{channel_id}/permissions/{target_id}"
         resp = requests.put(url, headers=headers, json=overwrite)
         if resp.status_code == 204:
             print(f"  ✅ Permission set for {overwrite.get('id', 'everyone')}")
