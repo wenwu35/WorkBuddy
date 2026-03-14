@@ -1,0 +1,76 @@
+# Claw Channel 配置示例
+# 注意：这只是示例文件，请根据实际情况修改
+
+[channels]
+# 孩子的微信 Channel
+[[channels.channels]]
+id = "child_wechat"
+name = "孩子的微信"
+type = "wechat"
+enabled = true
+
+# 孩子的权限配置
+[channels.channels.permissions]
+# 允许的操作
+can_practice = true        # 可以练习题目
+can_submit_answers = true  # 可以提交答案
+can_view_points = true     # 可以查看自己的积分
+
+# 禁止的操作
+can_view_config = false    # 不能查看配置文件
+can_modify_rules = false   # 不能修改规则
+can_view_all_data = false  # 不能查看所有数据
+can_modify_word_bank = false # 不能修改题库
+
+# 家长的微信 Channel
+[[channels.channels]]
+id = "parent_wechat"
+name = "家长的微信"
+type = "wechat"
+enabled = true
+
+# 家长的权限配置
+[channels.channels.permissions]
+# 允许的操作
+can_practice = true        # 可以练习
+can_submit_answers = true  # 可以提交答案
+can_view_points = true     # 可以查看积分
+can_view_config = true     # 可以查看配置
+can_modify_rules = true    # 可以修改规则
+can_view_all_data = true   # 可以查看所有数据
+can_modify_word_bank = true # 可以修改题库
+
+# 微信 Channel 的具体配置
+[channels.wechat]
+# 接收消息的方式
+receive_mode = "message"  # message 或 poll
+
+# 消息格式
+message_format = "text"   # text, voice 或 mixed
+
+# 语音识别配置
+[channels.wechat.voice_recognition]
+enabled = true            # 是否启用语音识别
+engine = "default"         # 识别引擎：default（微信自带）或 doubao（豆包）
+auto_convert = true       # 自动转换为文本
+
+# 消息推送配置
+[channels.wechat.push]
+push_points = true        # 推送积分更新
+push_summary = true       # 推送每日学习摘要
+push_reminder = true      # 推送学习提醒
+reminder_time = "18:00"   # 提醒时间（24小时制）
+reminder_timezone = "Australia/Sydney"  # 时区
+
+# 学习数据存储配置
+[channels.wechat.data_storage]
+storage_type = "local"    # local 或 cloud
+backup_enabled = true    # 是否启用备份
+backup_interval = "daily" # 备份间隔：daily, weekly
+
+# 统计报告配置
+[channels.wechat.reports]
+weekly_report = true      # 每周发送学习报告
+weekly_report_day = "sunday"  # 发送日：monday, tuesday, etc.
+weekly_report_time = "20:00"  # 发送时间
+include_chart = true      # 是否包含图表

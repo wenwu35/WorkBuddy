@@ -1,0 +1,46 @@
+# 学习提醒自动化配置
+
+[[automations]]
+id = "daily_learning_reminder"
+name = "每日学习提醒"
+prompt = "向 Elena 的 Discord 频道 #chinese-practice 发送一条友好的学习提醒。语气要温和、鼓励，像大哥哥大姐姐一样，称呼她「Elena」。提醒她今天还没开始学习，邀请她来练几个汉字。可以加一点趣味，比如「今天的字超简单的」或「你昨天学了 XX 分，今天来刷新一下吧？」"
+rrule = "FREQ=DAILY;BYHOUR=7;BYMINUTE=0"
+cwds = ["/Users/wenwu/WorkBuddy/Claw"]
+status = "ACTIVE"
+
+# 注意：BYHOUR=7 是 UTC 时间，对应悉尼夏令时（AEDT = UTC+11）下午6点
+# 悉尼冬令时（AEST = UTC+10）对应 BYHOUR=7 = 下午5点
+# 如需精确控制，建议在 Claw 的时区设置中统一指定 Australia/Sydney
+
+[[automations]]
+id = "daily_learning_summary"
+name = "每日学习摘要"
+prompt = "向家长的 Discord 频道 #parent-dashboard 发送今天 Elena 的学习摘要，格式清晰，包括：
+1. 📚 今天学了哪些汉字
+2. ⭐ 练习得分
+3. 🏆 积分变化（今日得分 / 累计总分 / 连续学习天数）
+4. 💡 明天建议复习的重点字
+如果今天没有学习，也要发送提醒并附上最近的学习统计。"
+rrule = "FREQ=DAILY;BYHOUR=10;BYMINUTE=0"
+cwds = ["/Users/wenwu/WorkBuddy/Claw"]
+status = "ACTIVE"
+
+# BYHOUR=10 UTC = 悉尼晚上9点（AEDT）/ 晚上8点（AEST）
+
+[[automations]]
+id = "weekly_learning_report"
+name = "每周学习报告"
+prompt = "向家长的 Discord 频道 #parent-dashboard 发送本周 Elena 的学习报告，包括：
+1. 📊 本周学习天数（X/7天）
+2. 📖 本周新学汉字数量和列表
+3. ✅ 已掌握的汉字（累计）
+4. 🔄 需要重点复习的汉字
+5. 🏅 本周积分统计
+6. 💬 本周亮点（比如连续学习、某个字进步明显等）
+7. 📅 下周学习建议
+语气要积极正面，多鼓励，让家长也感受到孩子的进步。"
+rrule = "FREQ=WEEKLY;BYDAY=SU;BYHOUR=9;BYMINUTE=0"
+cwds = ["/Users/wenwu/WorkBuddy/Claw"]
+status = "ACTIVE"
+
+# BYHOUR=9 UTC 周日 = 悉尼周日晚上8点（AEDT）/ 晚上7点（AEST）

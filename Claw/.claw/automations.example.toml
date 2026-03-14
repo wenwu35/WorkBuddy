@@ -1,0 +1,37 @@
+# 学习提醒自动化配置
+# 用于定时发送学习提醒和统计报告
+
+[[automations]]
+id = "daily_learning_reminder"
+name = "每日学习提醒"
+prompt = "向孩子的微信 Channel 发送一条友好的学习提醒，提醒她今天还没开始学习。语气要温和、鼓励，就像大哥哥大姐姐一样。"
+rrule = "FREQ=DAILY;BYHOUR=18;BYMINUTE=0;BYSECOND=0"
+cwds = ["/Users/wenwu/WorkBuddy/Claw"]
+status = "ACTIVE"
+
+[[automations]]
+id = "daily_learning_summary"
+name = "每日学习摘要"
+prompt = "向家长的微信 Channel 发送今日学习摘要，包括：
+1. 今天学习的汉字
+2. 练习得分
+3. 积分变化
+4. 明天建议学习的重点
+格式要清晰简洁，便于家长快速了解孩子的学习情况。"
+rrule = "FREQ=DAILY;BYHOUR=21;BYMINUTE=0;BYSECOND=0"
+cwds = ["/Users/wenwu/WorkBuddy/Claw"]
+status = "ACTIVE"
+
+[[automations]]
+id = "weekly_learning_report"
+name = "每周学习报告"
+prompt = "向家长的微信 Channel 发送本周学习报告，包括：
+1. 本周学习的汉字数量
+2. 掌握率统计
+3. 连续学习天数
+4. 学习亮点和进步
+5. 下周学习建议
+可以加入一些数据可视化的描述，让报告更加直观。"
+rrule = "FREQ=WEEKLY;BYDAY=SU;BYHOUR=20;BYMINUTE=0;BYSECOND=0"
+cwds = ["/Users/wenwu/WorkBuddy/Claw"]
+status = "ACTIVE"

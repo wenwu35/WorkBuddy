@@ -1,0 +1,93 @@
+# Discord Channel 配置
+# 用于 Claw 连接 Discord 的配置文件
+
+[channels.discord]
+# Discord Bot Token（在 Discord Developer Portal 创建 Bot 后获取）
+# 填写后请保密，不要分享给他人
+bot_token = "YOUR_DISCORD_BOT_TOKEN"
+
+# Discord Server（Guild）ID
+# 右键点击你的 Discord 服务器 → 复制服务器 ID
+guild_id = "YOUR_GUILD_ID"
+
+# ── 频道配置 ──────────────────────────────────────────────
+
+# 孩子的练习频道
+[channels.discord.child_channel]
+name = "chinese-practice"
+channel_id = "YOUR_CHILD_CHANNEL_ID"   # 创建频道后填入
+description = "Elena 的中文练习频道"
+
+# 家长的数据面板频道
+[channels.discord.parent_channel]
+name = "parent-dashboard"
+channel_id = "YOUR_PARENT_CHANNEL_ID"  # 创建频道后填入
+description = "家长查看学习数据和报告"
+
+# ── 角色权限配置 ──────────────────────────────────────────
+
+# Elena 的角色（Child）
+[channels.discord.roles.child]
+role_name = "Elena"
+role_id = "YOUR_CHILD_ROLE_ID"         # 创建角色后填入
+can_access_channels = ["chinese-practice"]
+permissions = [
+  "send_messages",
+  "read_messages",
+  "attach_files"      # 允许发图片（拍课本用）
+]
+
+# 家长的角色（Parent）
+[channels.discord.roles.parent]
+role_name = "Parent"
+role_id = "YOUR_PARENT_ROLE_ID"        # 创建角色后填入
+can_access_channels = ["chinese-practice", "parent-dashboard"]
+permissions = [
+  "send_messages",
+  "read_messages",
+  "manage_messages",  # 可以管理消息
+  "attach_files"
+]
+
+# ── 消息设置 ──────────────────────────────────────────────
+
+[channels.discord.message_settings]
+# 语音消息转文字（孩子可以发语音，自动转成文字）
+voice_to_text = true
+
+# 图片 OCR（孩子拍课本照片，自动识别文字）
+image_ocr = true
+
+# 消息语言（中英文混合都接受）
+accept_languages = ["zh", "en"]
+
+# ── 推送通知 ──────────────────────────────────────────────
+
+[channels.discord.notifications]
+# 学习提醒（推送到 #chinese-practice，Elena 可见）
+daily_reminder = true
+daily_reminder_time = "17:00"           # 悉尼时间下午5点
+daily_reminder_timezone = "Australia/Sydney"
+daily_reminder_message = "Elena，今天还没有练习中文哦！来学几个字吧 😊"
+
+# 每日学习摘要（推送到 #parent-dashboard，仅家长可见）
+daily_summary = true
+daily_summary_time = "21:00"            # 悉尼时间晚上9点
+daily_summary_timezone = "Australia/Sydney"
+
+# 每周学习报告（推送到 #parent-dashboard）
+weekly_report = true
+weekly_report_day = "sunday"
+weekly_report_time = "20:00"            # 悉尼时间周日晚上8点
+weekly_report_timezone = "Australia/Sydney"
+
+# ── 搭建步骤 ──────────────────────────────────────────────
+# 1. 前往 https://discord.com/developers/applications 创建一个 Bot
+# 2. 在 Bot 设置里开启 MESSAGE CONTENT INTENT
+# 3. 复制 Bot Token，填入上方 bot_token
+# 4. 创建 Discord 服务器（或使用已有服务器）
+# 5. 创建两个文字频道：#chinese-practice 和 #parent-dashboard
+# 6. 创建两个角色：Elena 和 Parent
+# 7. 设置 #parent-dashboard 仅 Parent 角色可见
+# 8. 将 Bot 邀请进服务器
+# 9. 将对应 ID 填入上方配置
