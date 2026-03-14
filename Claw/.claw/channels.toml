@@ -3,8 +3,8 @@
 
 [channels.discord]
 # Discord Bot Token（在 Discord Developer Portal 创建 Bot 后获取）
-# 填写后请保密，不要分享给他人
-bot_token = "YOUR_DISCORD_BOT_TOKEN"
+# 从环境变量读取，不要硬编码
+bot_token = "${DISCORD_BOT_TOKEN}"
 
 # Discord Server（Guild）ID
 # 右键点击你的 Discord 服务器 → 复制服务器 ID
